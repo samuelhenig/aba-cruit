@@ -11,8 +11,13 @@ import {
   Search,
   ShieldCheck,
   Sparkles,
+  UserRoundCheck,
   UsersRound,
 } from "lucide-react";
+
+const phoneDisplay = "410-542-2255";
+const phoneHref = "tel:4105422255";
+const email = "hello@abacruit.com";
 
 const roles = [
   ["BCBAs", "Our specialty and most requested role."],
@@ -36,6 +41,7 @@ export default function Home() {
       <Header />
       <Hero />
       <TrustBar />
+      <TwoPaths />
       <Roles />
       <Why />
       <How />
@@ -60,17 +66,17 @@ function Header() {
         </a>
 
         <nav className="hidden items-center gap-8 text-sm font-semibold text-slate-600 md:flex">
+          <a href="#companies" className="hover:text-blue">Companies</a>
+          <a href="#candidates" className="hover:text-blue">Candidates</a>
           <a href="#roles" className="hover:text-blue">Roles</a>
-          <a href="#why" className="hover:text-blue">Why Us</a>
-          <a href="#how" className="hover:text-blue">Process</a>
           <a href="#contact" className="hover:text-blue">Contact</a>
         </nav>
 
         <a
-          href="tel:4102222222"
+          href={phoneHref}
           className="hidden rounded-full bg-navy px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue sm:inline-flex"
         >
-          410-222-2222
+          {phoneDisplay}
         </a>
       </div>
     </header>
@@ -94,25 +100,25 @@ function Hero() {
             Build your ABA team faster.
           </h1>
 
-          <p className="mt-7 max-w-2xl text-xl leading-9 text-slate-650 text-slate-600">
+          <p className="mt-7 max-w-2xl text-xl leading-9 text-slate-600">
             From BCBAs and RBTs to clinical leadership and support staff, ABA Cruit helps ABA organizations connect with qualified candidates quickly and efficiently.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#contact" className="inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 text-base font-bold text-white shadow-soft transition hover:bg-navy">
-              Schedule a Call <ArrowRight className="ml-2 h-5 w-5" />
+            <a href="#companies" className="inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 text-base font-bold text-white shadow-soft transition hover:bg-navy">
+              I Need to Hire ABA Staff <ArrowRight className="ml-2 h-5 w-5" />
             </a>
-            <a href="mailto:hello@abacruit.com" className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-4 text-base font-bold text-navy transition hover:border-blue hover:text-blue">
-              Submit a Position
+            <a href="#candidates" className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-4 text-base font-bold text-navy transition hover:border-blue hover:text-blue">
+              I’m Looking for an ABA Role
             </a>
           </div>
 
           <div className="mt-9 flex flex-col gap-3 text-sm font-semibold text-slate-600 sm:flex-row sm:items-center sm:gap-6">
-            <a href="tel:4102222222" className="inline-flex items-center gap-2 hover:text-blue">
-              <Phone className="h-4 w-4 text-blue" /> 410-222-2222
+            <a href={phoneHref} className="inline-flex items-center gap-2 hover:text-blue">
+              <Phone className="h-4 w-4 text-blue" /> {phoneDisplay}
             </a>
-            <a href="mailto:hello@abacruit.com" className="inline-flex items-center gap-2 hover:text-blue">
-              <Mail className="h-4 w-4 text-blue" /> hello@abacruit.com
+            <a href={`mailto:${email}`} className="inline-flex items-center gap-2 hover:text-blue">
+              <Mail className="h-4 w-4 text-blue" /> {email}
             </a>
           </div>
         </div>
@@ -135,12 +141,6 @@ function Hero() {
               <Pipeline icon={<Clock3 />} title="Fast Turnaround" text="Our target is qualified conversations in about one week or less whenever possible." />
             </div>
           </div>
-
-          <div className="mt-5 grid gap-4 sm:grid-cols-3">
-            <SmallStat value="ABA" label="industry focus" />
-            <SmallStat value="BCBA" label="specialty role" />
-            <SmallStat value="Fast" label="direct outreach" />
-          </div>
         </div>
       </div>
     </section>
@@ -151,11 +151,51 @@ function TrustBar() {
   return (
     <section className="border-y border-slate-200 bg-white">
       <div className="mx-auto grid max-w-7xl gap-3 px-5 py-5 text-sm font-bold text-slate-600 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
-        {["ABA Industry Focused", "BCBA Recruiting Specialists", "Nationwide Recruiting", "Fast Turnaround"].map((item) => (
+        {["ABA Industry Focused", "BCBA Recruiting Specialists", "Companies & Candidates", "Fast Turnaround"].map((item) => (
           <div key={item} className="flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-blue" /> {item}
           </div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function TwoPaths() {
+  return (
+    <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div id="companies" className="rounded-[2rem] border border-slate-200 bg-soft p-8 shadow-sm">
+          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-blue shadow-sm">
+            <BriefcaseBusiness className="h-6 w-6" />
+          </div>
+          <h2 className="text-3xl font-black">For ABA Companies</h2>
+          <p className="mt-4 leading-8 text-slate-600">
+            Need BCBAs, RBTs, clinical leaders, supervisors, or office support? Tell us what roles you need filled and we’ll help connect you with qualified candidates.
+          </p>
+          <a
+            href={`mailto:${email}?subject=ABA Company Hiring Request`}
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-blue px-6 py-4 font-bold text-white transition hover:bg-navy"
+          >
+            Submit a Hiring Request <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
+        </div>
+
+        <div id="candidates" className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+          <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-warm text-blue">
+            <UserRoundCheck className="h-6 w-6" />
+          </div>
+          <h2 className="text-3xl font-black">For ABA Professionals</h2>
+          <p className="mt-4 leading-8 text-slate-600">
+            Certified BCBA, RBT, BT, supervisor, or ABA professional? Send us your information and we’ll help match you with ABA companies that may be a strong fit.
+          </p>
+          <a
+            href={`mailto:${email}?subject=ABA Candidate Application`}
+            className="mt-6 inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-4 font-bold text-navy transition hover:border-blue hover:text-blue"
+          >
+            Apply to Be Matched <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -185,7 +225,6 @@ function Why() {
     <section id="why" className="bg-soft py-20">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionIntro eyebrow="Why ABA companies choose us" title="Recruiting designed specifically for ABA" text="Unlike general recruiting firms, we understand ABA organizations, certification requirements, and the pressure of filling clinical roles quickly." />
-
         <div className="mt-11 grid gap-5 lg:grid-cols-3">
           <Feature icon={<Search />} title="Focused search" text="We identify candidates based on the actual role, geography, requirements, and hiring urgency." />
           <Feature icon={<Phone />} title="Proactive outreach" text="We do not just wait for applicants. We reach out directly and professionally." />
@@ -257,15 +296,15 @@ function CTA() {
           <div>
             <h2 className="text-4xl font-black tracking-tight md:text-5xl">Let’s talk about your hiring needs.</h2>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50">
-              Whether you need one BCBA or support building an entire ABA team, ABA Cruit can help you move faster.
+              Whether you need one BCBA, need support building an ABA team, or are an ABA professional looking for the right match, ABA Cruit can help.
             </p>
           </div>
           <div className="rounded-[1.5rem] bg-white p-6 text-navy">
-            <a href="tel:4102222222" className="mb-4 flex items-center gap-3 rounded-2xl bg-soft p-4 font-black hover:text-blue">
-              <Phone className="h-5 w-5 text-blue" /> 410-222-2222
+            <a href={phoneHref} className="mb-4 flex items-center gap-3 rounded-2xl bg-soft p-4 font-black hover:text-blue">
+              <Phone className="h-5 w-5 text-blue" /> {phoneDisplay}
             </a>
-            <a href="mailto:hello@abacruit.com" className="flex items-center gap-3 rounded-2xl bg-soft p-4 font-black hover:text-blue">
-              <Mail className="h-5 w-5 text-blue" /> hello@abacruit.com
+            <a href={`mailto:${email}`} className="flex items-center gap-3 rounded-2xl bg-soft p-4 font-black hover:text-blue">
+              <Mail className="h-5 w-5 text-blue" /> {email}
             </a>
           </div>
         </div>
@@ -283,8 +322,8 @@ function Footer() {
           <div className="mt-1">Staffing & Recruiting for ABA Organizations</div>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:gap-5">
-          <a href="tel:4102222222" className="hover:text-blue">410-222-2222</a>
-          <a href="mailto:hello@abacruit.com" className="hover:text-blue">hello@abacruit.com</a>
+          <a href={phoneHref} className="hover:text-blue">{phoneDisplay}</a>
+          <a href={`mailto:${email}`} className="hover:text-blue">{email}</a>
         </div>
       </div>
     </footer>
@@ -311,15 +350,6 @@ function Pipeline({ icon, title, text }: { icon: React.ReactNode; title: string;
         <h3 className="font-black">{title}</h3>
         <p className="mt-1 text-sm leading-6 text-slate-600">{text}</p>
       </div>
-    </div>
-  );
-}
-
-function SmallStat({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="rounded-[1.25rem] border border-slate-200 bg-white p-4 text-center">
-      <div className="text-lg font-black text-navy">{value}</div>
-      <div className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">{label}</div>
     </div>
   );
 }
