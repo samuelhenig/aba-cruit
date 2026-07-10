@@ -97,11 +97,11 @@ function Hero() {
           </div>
 
           <h1 className="max-w-4xl text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">
-            Build your ABA team faster.
+            National ABA Recruiting Firm for BCBAs, RBTs & Clinical Leaders.
           </h1>
 
           <p className="mt-7 max-w-2xl text-xl leading-9 text-slate-600">
-            From BCBAs and RBTs to clinical leadership and support staff, ABA Cruit helps ABA organizations connect with qualified candidates quickly and efficiently.
+            We help autism providers hire exceptional BCBAs, RBTs, and clinical leaders through specialized recruiting built exclusively for ABA organizations.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
