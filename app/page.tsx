@@ -74,7 +74,7 @@ function Header() {
         </a>
 
         <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-600 lg:flex">
-          <a href="#opportunities" className="hover:text-blue">Opportunities</a>
+          <a href="/opportunities" className="hover:text-blue">Opportunities</a>
           <a href="#talent-network" className="hover:text-blue">Talent Network</a>
           <a href="#employers" className="hover:text-blue">For Employers</a>
           <a href="#roles" className="hover:text-blue">Roles</a>
@@ -116,7 +116,7 @@ function Hero() {
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#opportunities"
+              href="/opportunities"
               className="inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 text-base font-bold text-white shadow-soft transition hover:bg-navy"
             >
               I’m an ABA Professional <ArrowRight className="ml-2 h-5 w-5" />
@@ -337,7 +337,7 @@ function TwoPaths() {
               </div>
             ))}
           </div>
-          <a href="#opportunities" className="mt-7 inline-flex items-center justify-center rounded-full border border-blue bg-white px-6 py-4 font-bold text-blue transition hover:bg-blue hover:text-white">
+          <a href="/opportunities" className="mt-7 inline-flex items-center justify-center rounded-full border border-blue bg-white px-6 py-4 font-bold text-blue transition hover:bg-blue hover:text-white">
             Browse Opportunities <ArrowRight className="ml-2 h-5 w-5" />
           </a>
         </div>
