@@ -410,7 +410,7 @@ function Footer() {
           <a href={instagramHref} target="_blank" rel="noreferrer" aria-label="ABA Cruit on Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 transition hover:border-blue hover:bg-blue">
             <span className="text-sm font-black">IG</span>
           </a>
-          <a href="#" aria-label="ABA Cruit on LinkedIn" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 transition hover:border-blue hover:bg-blue">
+          <a href="https://www.linkedin.com/company/abacruit" aria-label="ABA Cruit on LinkedIn" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 transition hover:border-blue hover:bg-blue">
             <span className="text-sm font-black">in</span>
           </a>
         </div>
