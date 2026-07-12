@@ -4,8 +4,6 @@ import {
   BriefcaseBusiness,
   CheckCircle2,
   Clock3,
-  Instagram,
-  Linkedin,
   LockKeyhole,
   Mail,
   MapPin,
@@ -284,7 +282,7 @@ function TalentNetwork() {
             </div>
 
             <a href={instagramHref} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 font-black text-blue hover:text-navy">
-              <Instagram className="h-5 w-5" />
+              <span className="text-sm font-black">IG</span>
               Follow @abacruit on Instagram
             </a>
           </div>
@@ -410,10 +408,10 @@ function Footer() {
 
         <div className="flex items-center gap-3">
           <a href={instagramHref} target="_blank" rel="noreferrer" aria-label="ABA Cruit on Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 transition hover:border-blue hover:bg-blue">
-            <Instagram className="h-5 w-5" />
+            <span className="text-sm font-black">IG</span>
           </a>
           <a href="#" aria-label="ABA Cruit on LinkedIn" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 transition hover:border-blue hover:bg-blue">
-            <Linkedin className="h-5 w-5" />
+            <span className="text-sm font-black">in</span>
           </a>
         </div>
       </div>
