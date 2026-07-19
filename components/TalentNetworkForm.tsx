@@ -5,7 +5,17 @@ import { useState } from "react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-export default function TalentNetworkForm() {
+type TalentNetworkFormProps = {
+  interestedRole?: string;
+  submitLabel?: string;
+  successMessage?: string;
+};
+
+export default function TalentNetworkForm({
+  interestedRole,
+  submitLabel = "Join the Talent Network",
+  successMessage = "Thank you. Your information has been received. ABA Cruit will contact you when a relevant opportunity may be a good fit.",
+}: TalentNetworkFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [message, setMessage] = useState("");
 
@@ -30,9 +40,12 @@ export default function TalentNetworkForm() {
       compensationGoal: String(
         formData.get("compensationGoal") || ""
       ).trim(),
-      whatMattersMost: String(
-        formData.get("whatMattersMost") || ""
-      ).trim(),
+      whatMattersMost: [
+        interestedRole ? `Interested in role: ${interestedRole}` : "",
+        String(formData.get("whatMattersMost") || "").trim(),
+      ]
+        .filter(Boolean)
+        .join(" — "),
     };
 
     try {
@@ -54,9 +67,7 @@ export default function TalentNetworkForm() {
 
       form.reset();
       setStatus("success");
-      setMessage(
-        "Thank you. Your information has been received. ABA Cruit will contact you when a relevant opportunity may be a good fit."
-      );
+      setMessage(successMessage);
     } catch (error) {
       setStatus("error");
       setMessage(
@@ -69,6 +80,11 @@ export default function TalentNetworkForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
+      {interestedRole && (
+        <div className="rounded-2xl border border-blue/20 bg-blue/5 px-4 py-4 text-sm font-black text-blue sm:col-span-2">
+          You are submitting interest in: {interestedRole}
+        </div>
+      )}
       <Input name="fullName" placeholder="Full name" />
       <Input name="email" type="email" placeholder="Email address" />
       <Input name="phone" type="tel" placeholder="Phone number" />
@@ -111,7 +127,7 @@ export default function TalentNetworkForm() {
         disabled={status === "submitting"}
         className="inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 font-bold text-white transition hover:bg-navy disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2"
       >
-        {status === "submitting" ? "Submitting..." : "Join the Talent Network"}
+        {status === "submitting" ? "Submitting..." : submitLabel}
         {status !== "submitting" && <ArrowRight className="ml-2 h-5 w-5" />}
       </button>
 
