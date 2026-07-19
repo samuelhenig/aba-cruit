@@ -7,6 +7,9 @@ type LeadSubmission = {
   role?: string;
   currentState?: string;
   preferredLocation?: string;
+  preferredWorkStyle?: string;
+  compensationGoal?: string;
+  whatMattersMost?: string;
 };
 
 export async function POST(request: Request) {
@@ -15,19 +18,25 @@ export async function POST(request: Request) {
 
     if (!scriptUrl) {
       return NextResponse.json(
-        { success: false, message: "Lead submission is not configured." },
+        {
+          success: false,
+          message: "Lead submission is not configured.",
+        },
         { status: 500 }
       );
     }
 
     const data = (await request.json()) as LeadSubmission;
 
-    const fullName = data.fullName?.trim();
-    const email = data.email?.trim();
-    const phone = data.phone?.trim();
-    const role = data.role?.trim();
-    const currentState = data.currentState?.trim();
-    const preferredLocation = data.preferredLocation?.trim();
+    const fullName = data.fullName?.trim() || "";
+    const email = data.email?.trim() || "";
+    const phone = data.phone?.trim() || "";
+    const role = data.role?.trim() || "";
+    const currentState = data.currentState?.trim() || "";
+    const preferredLocation = data.preferredLocation?.trim() || "";
+    const preferredWorkStyle = data.preferredWorkStyle?.trim() || "";
+    const compensationGoal = data.compensationGoal?.trim() || "";
+    const whatMattersMost = data.whatMattersMost?.trim() || "";
 
     if (
       !fullName ||
@@ -35,10 +44,14 @@ export async function POST(request: Request) {
       !phone ||
       !role ||
       !currentState ||
-      !preferredLocation
+      !preferredLocation ||
+      !preferredWorkStyle
     ) {
       return NextResponse.json(
-        { success: false, message: "Please complete every field." },
+        {
+          success: false,
+          message: "Please complete every required field.",
+        },
         { status: 400 }
       );
     }
@@ -55,6 +68,9 @@ export async function POST(request: Request) {
         role,
         currentState,
         preferredLocation,
+        preferredWorkStyle,
+        compensationGoal,
+        whatMattersMost,
       }),
       redirect: "follow",
       cache: "no-store",
@@ -67,21 +83,12 @@ export async function POST(request: Request) {
     const responseText = await googleResponse.text();
 
     if (responseText) {
-      try {
-        const googleResult = JSON.parse(responseText);
+      const googleResult = JSON.parse(responseText);
 
-        if (googleResult.success === false) {
-          throw new Error(
-            googleResult.error || "The lead could not be saved."
-          );
-        }
-      } catch (error) {
-        if (
-          error instanceof Error &&
-          error.message !== "Unexpected end of JSON input"
-        ) {
-          throw error;
-        }
+      if (googleResult.success === false) {
+        throw new Error(
+          googleResult.error || "The lead could not be saved."
+        );
       }
     }
 
