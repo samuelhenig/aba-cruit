@@ -72,6 +72,7 @@ export default function OpportunitiesPage() {
       <Hero />
       <TrustBar />
       <OpportunityDirectory />
+      <RoleInterest />
       <TalentNetwork />
       <CandidateSupport />
       <Footer />
@@ -291,7 +292,6 @@ function OpportunityDirectory() {
 type Opportunity = (typeof opportunities)[number];
 
 function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
-  const subject = encodeURIComponent(`${opportunity.shortTitle} Opportunity — ${opportunity.location}`);
 
   return (
     <article className="overflow-hidden rounded-[2rem] border border-blue/30 bg-white shadow-soft">
@@ -339,10 +339,10 @@ function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <a
-              href={`mailto:${email}?subject=${subject}`}
+              href="#interested-maryland-bcba"
               className="inline-flex items-center justify-center rounded-full bg-blue px-6 py-4 font-bold text-white transition hover:bg-navy"
             >
-              Ask About This Role <ArrowRight className="ml-2 h-5 w-5" />
+              I’m Interested in This Role <ArrowRight className="ml-2 h-5 w-5" />
             </a>
             <a
               href="#talent-network"
@@ -354,6 +354,57 @@ function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
         </div>
       </div>
     </article>
+  );
+}
+
+function RoleInterest() {
+  return (
+    <section id="interested-maryland-bcba" className="bg-warm py-20">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid gap-10 rounded-[2rem] border border-blue/20 bg-white p-8 shadow-soft lg:grid-cols-[.8fr_1.2fr] lg:p-12">
+          <div>
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-blue">
+              Interested in this specific role?
+            </p>
+            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
+              BCBA Opportunity — Maryland
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              Complete this form if you want ABA Cruit to contact you specifically
+              about the Maryland BCBA opportunity shown above.
+            </p>
+
+            <div className="mt-7 space-y-3">
+              {[
+                "$90–$120 per hour",
+                "25–28 billable hours per week",
+                "Majority remote",
+                "Flexible schedule",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 text-sm font-bold text-slate-700"
+                >
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-blue" />
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-7 rounded-2xl bg-soft p-4 text-sm font-bold leading-6 text-slate-700">
+              This submission will be marked as interest in the Maryland BCBA role,
+              not just a general request for future opportunities.
+            </p>
+          </div>
+
+          <TalentNetworkForm
+            interestedRole="BCBA — Maryland"
+            submitLabel="Submit Interest in This Role"
+            successMessage="Thank you. Your interest in the Maryland BCBA opportunity has been received. ABA Cruit will follow up with you about this role."
+          />
+        </div>
+      </div>
+    </section>
   );
 }
 
