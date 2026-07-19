@@ -69,18 +69,37 @@ export async function POST(request: Request) {
     });
 
     if (!googleResponse.ok) {
-      throw new Error("Google Apps Script rejected the submission.");
+      throw new Error(
+        `Google Apps Script returned status ${googleResponse.status}.`
+      );
     }
 
     const responseText = await googleResponse.text();
 
-    if (responseText.trim().startsWith("{")) {
-      const googleResult = JSON.parse(responseText);
+    if (responseText.trim()) {
+      try {
+        const googleResult: unknown = JSON.parse(responseText);
 
-      if (googleResult.success === false) {
-        throw new Error(
-          googleResult.error || "The lead could not be saved."
-        );
+        if (
+          googleResult &&
+          typeof googleResult === "object" &&
+          "success" in googleResult &&
+          googleResult.success === false
+        ) {
+          const errorMessage =
+            "error" in googleResult && typeof googleResult.error === "string"
+              ? googleResult.error
+              : "The lead could not be saved.";
+
+          throw new Error(errorMessage);
+        }
+      } catch (error) {
+        if (
+          error instanceof Error &&
+          error.message !== "Unexpected end of JSON input"
+        ) {
+          console.log("Google response:", responseText);
+        }
       }
     }
 
