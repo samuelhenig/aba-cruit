@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import TalentNetworkForm from "../../components/TalentNetworkForm";
 import {
   ArrowRight,
   BadgeCheck,
@@ -392,56 +393,7 @@ function TalentNetwork() {
             </a>
           </div>
 
-          <form
-            action={`mailto:${email}`}
-            method="post"
-            encType="text/plain"
-            className="grid gap-4 sm:grid-cols-2"
-          >
-            <Input name="Full name" placeholder="Full name" />
-            <Input name="Email" type="email" placeholder="Email address" />
-            <Input name="Phone" type="tel" placeholder="Phone number" />
-            <Select name="Certification or role">
-              <option value="">Certification or role</option>
-              <option>BCBA</option>
-              <option>BCaBA</option>
-              <option>RBT</option>
-              <option>BT</option>
-              <option>Clinical Director</option>
-              <option>Regional Director</option>
-              <option>ABA Supervisor</option>
-              <option>Operations / Administrative</option>
-              <option>Other ABA Professional</option>
-            </Select>
-            <Input name="Current state" placeholder="Current state" />
-            <Input name="Preferred location" placeholder="Preferred state or location" />
-            <Select name="Preferred work style">
-              <option value="">Preferred work style</option>
-              <option>In person</option>
-              <option>Hybrid</option>
-              <option>Remote</option>
-              <option>Open to multiple options</option>
-            </Select>
-            <Input name="Compensation goal" placeholder="Compensation goal" />
-
-            <textarea
-              name="What matters most"
-              placeholder="What matters most in your next opportunity?"
-              rows={5}
-              className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-navy outline-none transition placeholder:text-slate-400 focus:border-blue focus:ring-2 focus:ring-blue/10 sm:col-span-2"
-            />
-
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 font-bold text-white transition hover:bg-navy sm:col-span-2"
-            >
-              Join the Talent Network <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-
-            <p className="text-center text-xs leading-5 text-slate-500 sm:col-span-2">
-              Your information is kept confidential and is not shared with employers without your permission.
-            </p>
-          </form>
+          <TalentNetworkForm />
         </div>
       </div>
     </section>
@@ -555,39 +507,6 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function Input({
-  name,
-  placeholder,
-  type = "text",
-}: {
-  name: string;
-  placeholder: string;
-  type?: string;
-}) {
-  return (
-    <input
-      required
-      name={name}
-      type={type}
-      placeholder={placeholder}
-      className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-navy outline-none transition placeholder:text-slate-400 focus:border-blue focus:ring-2 focus:ring-blue/10"
-    />
-  );
-}
-
-function Select({ name, children }: { name: string; children: ReactNode }) {
-  return (
-    <select
-      required
-      name={name}
-      defaultValue=""
-      className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-navy outline-none transition focus:border-blue focus:ring-2 focus:ring-blue/10"
-    >
-      {children}
-    </select>
   );
 }
 
