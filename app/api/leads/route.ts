@@ -28,24 +28,26 @@ export async function POST(request: Request) {
 
     const data = (await request.json()) as LeadSubmission;
 
-    const fullName = data.fullName?.trim() || "";
-    const email = data.email?.trim() || "";
-    const phone = data.phone?.trim() || "";
-    const role = data.role?.trim() || "";
-    const currentState = data.currentState?.trim() || "";
-    const preferredLocation = data.preferredLocation?.trim() || "";
-    const preferredWorkStyle = data.preferredWorkStyle?.trim() || "";
-    const compensationGoal = data.compensationGoal?.trim() || "";
-    const whatMattersMost = data.whatMattersMost?.trim() || "";
+    const payload = {
+      fullName: data.fullName?.trim() || "",
+      email: data.email?.trim() || "",
+      phone: data.phone?.trim() || "",
+      role: data.role?.trim() || "",
+      currentState: data.currentState?.trim() || "",
+      preferredLocation: data.preferredLocation?.trim() || "",
+      preferredWorkStyle: data.preferredWorkStyle?.trim() || "",
+      compensationGoal: data.compensationGoal?.trim() || "",
+      whatMattersMost: data.whatMattersMost?.trim() || "",
+    };
 
     if (
-      !fullName ||
-      !email ||
-      !phone ||
-      !role ||
-      !currentState ||
-      !preferredLocation ||
-      !preferredWorkStyle
+      !payload.fullName ||
+      !payload.email ||
+      !payload.phone ||
+      !payload.role ||
+      !payload.currentState ||
+      !payload.preferredLocation ||
+      !payload.preferredWorkStyle
     ) {
       return NextResponse.json(
         {
@@ -61,17 +63,7 @@ export async function POST(request: Request) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        fullName,
-        email,
-        phone,
-        role,
-        currentState,
-        preferredLocation,
-        preferredWorkStyle,
-        compensationGoal,
-        whatMattersMost,
-      }),
+      body: JSON.stringify(payload),
       redirect: "follow",
       cache: "no-store",
     });
@@ -82,7 +74,7 @@ export async function POST(request: Request) {
 
     const responseText = await googleResponse.text();
 
-    if (responseText) {
+    if (responseText.trim().startsWith("{")) {
       const googleResult = JSON.parse(responseText);
 
       if (googleResult.success === false) {
