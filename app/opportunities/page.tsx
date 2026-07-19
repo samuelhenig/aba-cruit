@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import TalentNetworkForm from "../../components/TalentNetworkForm";
 import {
-  ArrowRight,
+  ArrowRight,.
   BadgeCheck,
   BriefcaseBusiness,
   CheckCircle2,
