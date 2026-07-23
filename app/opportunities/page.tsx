@@ -94,25 +94,29 @@ function Header() {
         </a>
 
         <nav
-          aria-label="Primary navigation"
-          className="hidden items-center gap-7 text-sm font-semibold text-slate-600 lg:flex"
-        >
-          <a href="#open-roles" className="hover:text-blue">
-            Opportunities
-          </a>
-          <a href="#talent-network" className="hover:text-blue">
-            Talent Network
-          </a>
-          <a href="/#employers" className="hover:text-blue">
-            For Employers
-          </a>
-          <a href="/#roles" className="hover:text-blue">
-            Roles
-          </a>
-          <a href="#contact" className="hover:text-blue">
-            Contact
-          </a>
-        </nav>
+  aria-label="Primary navigation"
+  className="hidden items-center gap-7 text-sm font-semibold text-slate-600 lg:flex"
+>
+  <a href="/opportunities" className="hover:text-blue">
+    Opportunities
+  </a>
+
+  <a href="/opportunities#talent-network" className="hover:text-blue">
+    Talent Network
+  </a>
+
+  <a href="/#employers" className="hover:text-blue">
+    For Employers
+  </a>
+
+  <a href="/refer" className="hover:text-blue">
+    Refer & Earn
+  </a>
+
+  <a href="/#contact" className="hover:text-blue">
+    Contact
+  </a>
+</nav>
 
         <a
           href={phoneHref}
