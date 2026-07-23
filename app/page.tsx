@@ -52,6 +52,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <FeaturedOpportunity />
+      <ReferralCTA />
       <TalentNetwork />
       <TwoPaths />
       <Roles />
@@ -254,6 +255,74 @@ function FeaturedOpportunity() {
             Tell us what you’re looking for <ArrowRight className="ml-2 h-5 w-5" />
           </a>
         </aside>
+      </div>
+    </section>
+  );
+}
+
+function ReferralCTA() {
+  return (
+    <section className="bg-soft py-20">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid gap-8 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-soft lg:grid-cols-[1.1fr_.9fr]">
+          <div className="p-8 md:p-12">
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-blue">
+              ABA Cruit Referral Program
+            </p>
+
+            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
+              Know a Great BCBA?
+            </h2>
+
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+              Refer an ABA professional to ABA Cruit and earn up to $500 when
+              they are successfully placed and complete 90 days of employment.
+            </p>
+
+            <div className="mt-7 space-y-3">
+              {[
+                "$500 for a qualifying BCBA referral",
+                "Simple online referral form",
+                "We handle the recruiting process",
+                "Paid after eligibility is confirmed",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 text-sm font-bold text-slate-700"
+                >
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-blue" />
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="/refer"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 font-bold text-white transition hover:bg-navy"
+            >
+              Refer Someone
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+          </div>
+
+          <div className="flex items-center justify-center bg-navy p-10 text-center text-white md:p-12">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-blue">
+                Earn up to
+              </p>
+
+              <p className="mt-4 text-7xl font-black">$500</p>
+
+              <p className="mt-4 text-xl font-black">
+                For a qualifying BCBA referral
+              </p>
+
+              <p className="mt-4 max-w-md leading-7 text-slate-200">
+                Introduce the right person once. ABA Cruit handles the rest.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
