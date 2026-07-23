@@ -77,9 +77,6 @@ function Header() {
           <a href="/opportunities" className="hover:text-blue">
             Opportunities
           </a>
-          <a href="/#talent-network" className="hover:text-blue">
-            Talent Network
-          </a>
           <a href="/#employers" className="hover:text-blue">
             For Employers
           </a>
