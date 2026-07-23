@@ -101,10 +101,6 @@ function Header() {
     Opportunities
   </a>
 
-  <a href="/opportunities#talent-network" className="hover:text-blue">
-    Talent Network
-  </a>
-
   <a href="/#employers" className="hover:text-blue">
     For Employers
   </a>
