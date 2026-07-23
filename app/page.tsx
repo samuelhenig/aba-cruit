@@ -118,13 +118,13 @@ function Hero() {
               href="/opportunities"
               className="inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 text-base font-bold text-white shadow-soft transition hover:bg-navy"
             >
-              I’m an ABA Professional <ArrowRight className="ml-2 h-5 w-5" />
+              Browse ABA Opportunities <ArrowRight className="ml-2 h-5 w-5" />
             </a>
             <a
               href="#employers"
               className="inline-flex items-center justify-center rounded-full border border-blue bg-white px-7 py-4 text-base font-bold text-navy transition hover:bg-soft"
             >
-              I’m Hiring ABA Staff
+              Hire ABA Professionals
             </a>
           </div>
 
