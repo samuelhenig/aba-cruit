@@ -97,10 +97,10 @@ function Header() {
   aria-label="Primary navigation"
   className="hidden items-center gap-7 text-sm font-semibold text-slate-600 lg:flex"
 >
-  <a href="/opportunities" className="hover:text-blue">
-    Opportunities
-  </a>
-
+  <a href="/opportunities" className="font-black text-blue">
+  Opportunities
+</a>
+          
   <a href="/#employers" className="hover:text-blue">
     For Employers
   </a>
