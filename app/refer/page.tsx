@@ -80,9 +80,9 @@ function Header() {
           <a href="/#employers" className="hover:text-blue">
             For Employers
           </a>
-          <a href="/refer" className="text-blue">
-            Refer & Earn
-          </a>
+         <a href="/refer" className="font-black text-blue">
+           Refer & Earn
+         </a>         
           <a href="/#contact" className="hover:text-blue">
             Contact
           </a>
