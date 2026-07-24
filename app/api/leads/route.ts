@@ -1,17 +1,5 @@
 import { NextResponse } from "next/server";
 
-type LeadSubmission = {
-  fullName?: string;
-  email?: string;
-  phone?: string;
-  role?: string;
-  currentState?: string;
-  preferredLocation?: string;
-  preferredWorkStyle?: string;
-  compensationGoal?: string;
-  whatMattersMost?: string;
-};
-
 export async function POST(request: Request) {
   try {
     const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
@@ -26,36 +14,77 @@ export async function POST(request: Request) {
       );
     }
 
-    const data = (await request.json()) as LeadSubmission;
+    const data = await request.json();
 
-    const payload = {
-      fullName: data.fullName?.trim() || "",
-      email: data.email?.trim() || "",
-      phone: data.phone?.trim() || "",
-      role: data.role?.trim() || "",
-      currentState: data.currentState?.trim() || "",
-      preferredLocation: data.preferredLocation?.trim() || "",
-      preferredWorkStyle: data.preferredWorkStyle?.trim() || "",
-      compensationGoal: data.compensationGoal?.trim() || "",
-      whatMattersMost: data.whatMattersMost?.trim() || "",
-    };
+    let payload: Record<string, string>;
 
-    if (
-      !payload.fullName ||
-      !payload.email ||
-      !payload.phone ||
-      !payload.role ||
-      !payload.currentState ||
-      !payload.preferredLocation ||
-      !payload.preferredWorkStyle
-    ) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Please complete every required field.",
-        },
-        { status: 400 }
-      );
+    if (data.submissionType === "referral") {
+      payload = {
+        submissionType: "referral",
+
+        referrerFullName: String(data.referrerFullName || "").trim(),
+        referrerEmail: String(data.referrerEmail || "").trim(),
+        referrerPhone: String(data.referrerPhone || "").trim(),
+
+        referralFullName: String(data.referralFullName || "").trim(),
+        referralEmail: String(data.referralEmail || "").trim(),
+        referralPhone: String(data.referralPhone || "").trim(),
+
+        role: String(data.role || "").trim(),
+        currentState: String(data.currentState || "").trim(),
+        preferredLocation: String(data.preferredLocation || "").trim(),
+
+        relationship: String(data.relationship || "").trim(),
+        additionalInformation: String(
+          data.additionalInformation || ""
+        ).trim(),
+      };
+
+      if (
+        !payload.referrerFullName ||
+        !payload.referrerEmail ||
+        !payload.referrerPhone ||
+        !payload.referralFullName ||
+        !payload.role
+      ) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Please complete every required field.",
+          },
+          { status: 400 }
+        );
+      }
+    } else {
+      payload = {
+        fullName: String(data.fullName || "").trim(),
+        email: String(data.email || "").trim(),
+        phone: String(data.phone || "").trim(),
+        role: String(data.role || "").trim(),
+        currentState: String(data.currentState || "").trim(),
+        preferredLocation: String(data.preferredLocation || "").trim(),
+        preferredWorkStyle: String(data.preferredWorkStyle || "").trim(),
+        compensationGoal: String(data.compensationGoal || "").trim(),
+        whatMattersMost: String(data.whatMattersMost || "").trim(),
+      };
+
+      if (
+        !payload.fullName ||
+        !payload.email ||
+        !payload.phone ||
+        !payload.role ||
+        !payload.currentState ||
+        !payload.preferredLocation ||
+        !payload.preferredWorkStyle
+      ) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Please complete every required field.",
+          },
+          { status: 400 }
+        );
+      }
     }
 
     const googleResponse = await fetch(scriptUrl, {
@@ -74,47 +103,17 @@ export async function POST(request: Request) {
       );
     }
 
-    const responseText = await googleResponse.text();
-
-    if (responseText.trim()) {
-      try {
-        const googleResult: unknown = JSON.parse(responseText);
-
-        if (
-          googleResult &&
-          typeof googleResult === "object" &&
-          "success" in googleResult &&
-          googleResult.success === false
-        ) {
-          const errorMessage =
-            "error" in googleResult && typeof googleResult.error === "string"
-              ? googleResult.error
-              : "The lead could not be saved.";
-
-          throw new Error(errorMessage);
-        }
-      } catch (error) {
-        if (
-          error instanceof Error &&
-          error.message !== "Unexpected end of JSON input"
-        ) {
-          console.log("Google response:", responseText);
-        }
-      }
-    }
-
     return NextResponse.json({
       success: true,
-      message: "Thank you. Your information has been received.",
+      message: "Success",
     });
   } catch (error) {
-    console.error("Lead submission error:", error);
+    console.error(error);
 
     return NextResponse.json(
       {
         success: false,
-        message:
-          "We could not submit your information. Please try again shortly.",
+        message: "Unable to submit your information.",
       },
       { status: 500 }
     );
