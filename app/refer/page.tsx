@@ -1,3 +1,4 @@
+import ReferralForm from "@/components/ReferralForm";
 import {
   ArrowRight,
   BadgeDollarSign,
@@ -52,7 +53,7 @@ export default function ReferralPage() {
       <Hero />
       <HowItWorks />
       <BonusAmounts />
-      <ReferralForm />
+      <ReferralFormSection />
       <Terms />
       <Footer />
     </main>
@@ -312,7 +313,7 @@ function BonusAmounts() {
   );
 }
 
-function ReferralForm() {
+function ReferralFormSection() {
   return (
     <section
       id="refer"
@@ -329,142 +330,18 @@ function ReferralForm() {
           </h2>
 
           <p className="mt-5 text-lg leading-8 text-slate-600">
-            Submit the professional’s information and we will reach out
-            confidentially. Please let them know that you are referring them to
-            ABA Cruit.
+            Submit the professional's information and we'll confidentially reach out.
           </p>
 
           <div className="mt-8 space-y-4">
             <Benefit text="Quick and simple submission" />
             <Benefit text="Confidential professional outreach" />
             <Benefit text="No recruiting work required from you" />
-            <Benefit text="Cash bonus for a qualifying placement" />
-          </div>
-
-          <div className="mt-8 rounded-2xl bg-soft p-5">
-            <div className="flex items-start gap-3">
-              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-blue" />
-
-              <p className="text-sm leading-6 text-slate-600">
-                By submitting a referral, you confirm that you have a genuine
-                connection to the person and are not submitting information
-                obtained from a purchased or scraped contact list.
-              </p>
-            </div>
+            <Benefit text="Cash bonus for qualifying placements" />
           </div>
         </div>
 
-        <form
-          action={`mailto:${email}?subject=New ABA Cruit Referral`}
-          method="post"
-          encType="text/plain"
-          className="grid gap-4 sm:grid-cols-2"
-        >
-          <div className="sm:col-span-2">
-            <p className="mb-3 font-black">Your information</p>
-          </div>
-
-          <Input name="Referrer full name" placeholder="Your full name" />
-          <Input
-            name="Referrer email"
-            type="email"
-            placeholder="Your email address"
-          />
-          <Input
-            name="Referrer phone"
-            type="tel"
-            placeholder="Your phone number"
-          />
-
-          <Select name="Relationship to candidate">
-            <option value="">Your relationship to them</option>
-            <option>Friend</option>
-            <option>Former coworker</option>
-            <option>Current coworker</option>
-            <option>Professional connection</option>
-            <option>Other</option>
-          </Select>
-
-          <div className="mt-4 border-t border-slate-200 pt-6 sm:col-span-2">
-            <p className="font-black">Professional you are referring</p>
-          </div>
-
-          <Input
-            name="Candidate full name"
-            placeholder="Professional’s full name"
-          />
-
-          <Select name="Candidate role">
-            <option value="">Certification or role</option>
-            <option>BCBA</option>
-            <option>BCaBA</option>
-            <option>RBT</option>
-            <option>BT</option>
-            <option>Clinical Director</option>
-            <option>ABA Supervisor</option>
-            <option>Operations or Administrative</option>
-            <option>Other ABA Professional</option>
-          </Select>
-
-          <Input
-            name="Candidate email"
-            type="email"
-            placeholder="Professional’s email"
-          />
-
-          <Input
-            name="Candidate phone"
-            type="tel"
-            placeholder="Professional’s phone"
-          />
-
-          <Input
-            name="Candidate state"
-            placeholder="Professional’s current state"
-          />
-
-          <Input
-            name="Candidate preferred location"
-            placeholder="Preferred work location"
-          />
-
-          <div className="sm:col-span-2">
-            <textarea
-              name="Additional information"
-              placeholder="Anything helpful we should know? Optional"
-              rows={5}
-              className="w-full resize-none rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-navy outline-none transition placeholder:text-slate-400 focus:border-blue focus:ring-2 focus:ring-blue/10"
-            />
-          </div>
-
-          <label className="flex items-start gap-3 rounded-2xl bg-soft p-4 text-sm leading-6 text-slate-600 sm:col-span-2">
-            <input
-              required
-              type="checkbox"
-              name="Referral terms accepted"
-              value="Yes"
-              className="mt-1 h-4 w-4 shrink-0 accent-blue"
-            />
-
-            <span>
-              I have read and agree to the referral eligibility terms below,
-              and I understand that submitting a referral does not guarantee a
-              bonus.
-            </span>
-          </label>
-
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 font-bold text-white transition hover:bg-navy sm:col-span-2"
-          >
-            Submit Referral
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </button>
-
-          <p className="text-center text-xs leading-5 text-slate-500 sm:col-span-2">
-            Your information will be used to review and process this referral.
-          </p>
-        </form>
+        <ReferralForm />
       </div>
     </section>
   );
