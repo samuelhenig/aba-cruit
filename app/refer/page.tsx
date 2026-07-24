@@ -1,4 +1,4 @@
-import ReferralForm from "@/components/ReferralForm";
+import ReferralForm from "../../components/ReferralForm";
 import {
   ArrowRight,
   BadgeDollarSign,
