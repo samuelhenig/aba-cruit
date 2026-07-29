@@ -101,7 +101,7 @@ function Hero() {
           alt="ABA professional working with a child"
           className="h-full w-full object-cover object-[72%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/35 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/15" />
       </div>
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
@@ -144,8 +144,8 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-white/30 bg-white/15 p-6 shadow-2xl md:p-8">
-          <div className="rounded-[1.5rem] bg-transparent p-5">
+        <div className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-soft backdrop-blur-sm md:p-8">
+          <div className="rounded-[1.5rem] bg-soft p-5">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-slate-500">Why ABA Cruit</p>
@@ -518,7 +518,7 @@ function Select({ name, children }: { name: string; children: React.ReactNode })
 
 function Pipeline({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
-    <div className="flex gap-4 rounded-[1.25rem] border border-white/20 bg-white/20 p-4 shadow-md">
+    <div className="flex gap-4 rounded-[1.25rem] bg-white p-4 shadow-sm">
       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-warm text-blue">
         {icon}
       </div>
