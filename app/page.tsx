@@ -8,7 +8,7 @@ const professionalBenefits = ["Confidential career search","Better-fit opportuni
 
 const employerBenefits = ["BCBAs, RBTs, and clinical leaders","Proactive candidate outreach","Qualified and interested candidates","A focused ABA recruiting partner",];
 
-export default function Home() {return (<main className="min-h-screen bg-white font-sans text-navy"><Header /><Hero /><TrustBar /><ReferralCTA /><TalentNetwork /><TwoPaths /><Roles /><Footer /></main>);}
+export default function Home() {return (<main className="min-h-screen bg-white font-sans text-navy"><Header /><Hero /><ReferralCTA /><TalentNetwork /><TwoPaths /><TrustBar /><Roles /><Footer /></main>);}
 
 function Header() {return (<header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl"><div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"><a href="#top" className="leading-none"><div className="text-2xl font-black tracking-tight"><span className="text-blue">ABA</span> Cruit</div><div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.17em] text-slate-500">Staffing & Recruiting</div></a>
 
@@ -34,8 +34,11 @@ function Header() {return (<header className="sticky top-0 z-50 border-b border-
 function Hero() {return (<section id="top" className="relative overflow-hidden bg-white"><div className="absolute inset-0"><img
        src="/images/hero-aba.jpg"
        alt="ABA professional working with a child"
-       className="h-full w-full object-cover object-[78%_center]"
-     /><div className="absolute inset-0 bg-gradient-to-r from-white via-white/35 to-transparent" /></div>
+       className="h-full w-full object-cover object-[78%_center] brightness-[0.84] saturate-[0.92] contrast-[0.96]"
+     />
+     <div className="absolute inset-0 bg-navy/10" />
+     <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-[46%] to-transparent" />
+     <div className="absolute inset-0 bg-gradient-to-t from-navy/10 via-transparent to-white/5" /></div>
 
   <div className="relative z-10 mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
     <div className="max-w-2xl">
