@@ -92,54 +92,66 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-white">
-      <div className="absolute inset-0">
-        <img
-          src="/images/hero-aba.jpg"
-          alt="ABA professional working with a child"
-          className="h-full w-full object-cover object-[78%_center]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/35 to-transparent" />
-      </div>
+    <section id="top" className="w-full overflow-hidden bg-white">
+      <div className="mx-auto grid max-w-7xl lg:grid-cols-2">
+        <div className="flex items-center px-5 py-14 sm:px-8 sm:py-16 lg:px-8 lg:py-24">
+          <div className="w-full max-w-2xl">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/15 bg-white px-4 py-2 text-sm font-bold text-blue shadow-sm">
+              <Sparkles className="h-4 w-4" />
+              The recruiting company exclusively for ABA
+            </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
-        <div className="max-w-2xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/15 bg-white px-4 py-2 text-sm font-bold text-blue shadow-sm">
-            <Sparkles className="h-4 w-4" />
-            The recruiting company exclusively for ABA
+            <h1 className="text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+              The Recruiting Company Exclusively for ABA.
+            </h1>
+
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 sm:text-xl sm:leading-9">
+              We connect ABA organizations with exceptional BCBAs, RBTs, and clinical leaders—and help ABA professionals find roles where they can grow and thrive.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="/opportunities"
+                className="inline-flex w-full items-center justify-center rounded-full bg-blue px-7 py-4 text-base font-bold text-white shadow-soft transition hover:bg-navy sm:w-auto"
+              >
+                Browse ABA Opportunities
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+
+              <a
+                href="#employers"
+                className="inline-flex w-full items-center justify-center rounded-full border border-blue bg-white px-7 py-4 text-base font-bold text-navy transition hover:bg-soft sm:w-auto"
+              >
+                Hire ABA Professionals
+              </a>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 text-sm font-semibold text-slate-600 sm:flex-row sm:items-center sm:gap-6">
+              <a
+                href={phoneHref}
+                className="inline-flex items-center gap-2 hover:text-blue"
+              >
+                <Phone className="h-4 w-4 text-blue" />
+                {phoneDisplay}
+              </a>
+
+              <a
+                href={`mailto:${email}`}
+                className="inline-flex items-center gap-2 hover:text-blue"
+              >
+                <Mail className="h-4 w-4 text-blue" />
+                {email}
+              </a>
+            </div>
           </div>
+        </div>
 
-          <h1 className="max-w-4xl text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">
-            The Recruiting Company Exclusively for ABA.
-          </h1>
-
-          <p className="mt-7 max-w-2xl text-xl leading-9 text-slate-600">
-            We connect ABA organizations with exceptional BCBAs, RBTs, and clinical leaders—and help ABA professionals find roles where they can grow and thrive.
-          </p>
-
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="/opportunities"
-              className="inline-flex items-center justify-center rounded-full bg-blue px-7 py-4 text-base font-bold text-white shadow-soft transition hover:bg-navy"
-            >
-              Browse ABA Opportunities <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-            <a
-              href="#employers"
-              className="inline-flex items-center justify-center rounded-full border border-blue bg-white px-7 py-4 text-base font-bold text-navy transition hover:bg-soft"
-            >
-              Hire ABA Professionals
-            </a>
-          </div>
-
-          <div className="mt-9 flex flex-col gap-3 text-sm font-semibold text-slate-600 sm:flex-row sm:items-center sm:gap-6">
-            <a href={phoneHref} className="inline-flex items-center gap-2 hover:text-blue">
-              <Phone className="h-4 w-4 text-blue" /> {phoneDisplay}
-            </a>
-            <a href={`mailto:${email}`} className="inline-flex items-center gap-2 hover:text-blue">
-              <Mail className="h-4 w-4 text-blue" /> {email}
-            </a>
-          </div>
+        <div className="relative h-[340px] sm:h-[440px] lg:h-auto lg:min-h-[640px]">
+          <img
+            src="/images/hero-aba.jpg"
+            alt="ABA professional working with a child"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
         </div>
       </div>
     </section>
