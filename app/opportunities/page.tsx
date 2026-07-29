@@ -32,6 +32,7 @@ const instagramHref = "https://www.instagram.com/abacruit/";
 
 const opportunities = [
   {
+    id: "maryland-bcba",
     title: "Board Certified Behavior Analyst",
     shortTitle: "BCBA",
     location: "Maryland",
@@ -54,6 +55,31 @@ const opportunities = [
     requirements:
       "Active BCBA certification and Maryland LBA eligibility required.",
   },
+  {
+    id: "virginia-founding-clinical-consultant",
+    title: "Founding Clinical Consultant",
+    shortTitle: "BCBA Leadership",
+    location: "Virginia",
+    workStyle: "Primarily remote",
+    compensation: "Consulting compensation based on experience",
+    schedule: "10–15 hours per week",
+    status: "Interviewing Immediately",
+    featured: true,
+    description:
+      "Help build a high-quality ABA organization from the ground up while shaping its clinical vision, systems, and long-term direction.",
+    highlights: [
+      "Flexible consulting schedule",
+      "Occasional meetings in Virginia",
+      "Direct collaboration with executive leadership",
+      "Path to a full-time Clinical Director role",
+      "Build clinical systems and workflows",
+      "Support credentialing and accreditation readiness",
+      "Develop supervision systems for RBTs and BCBAs",
+      "Help recruit and mentor a growing clinical team",
+    ],
+    requirements:
+      "Active BCBA certification, Virginia licensure eligibility, 3–5 years of ABA clinical experience, RBT supervision experience, and strong knowledge of ABA ethics and regulatory requirements.",
+  },
 ] as const;
 
 const networkBenefits = [
@@ -72,7 +98,7 @@ export default function OpportunitiesPage() {
       <Hero />
       <TrustBar />
       <OpportunityDirectory />
-      <RoleInterest />
+      <RoleInterestSections />
       <TalentNetwork />
       <CandidateSupport />
       <Footer />
@@ -258,7 +284,7 @@ function OpportunityDirectory() {
 
         <div className="inline-flex items-center gap-2 self-start rounded-full border border-slate-200 bg-soft px-4 py-3 text-sm font-bold text-slate-600 md:self-auto">
           <Filter className="h-4 w-4 text-blue" />
-          {opportunities.length} active opportunity
+          {opportunities.length} active {opportunities.length === 1 ? "opportunity" : "opportunities"}
         </div>
       </div>
 
@@ -339,7 +365,7 @@ function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#interested-maryland-bcba"
+              href={`#interested-${opportunity.id}`}
               className="inline-flex items-center justify-center rounded-full bg-blue px-6 py-4 font-bold text-white transition hover:bg-navy"
             >
               I’m Interested in This Role <ArrowRight className="ml-2 h-5 w-5" />
@@ -357,30 +383,81 @@ function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
   );
 }
 
-function RoleInterest() {
+function RoleInterestSections() {
   return (
-    <section id="interested-maryland-bcba" className="bg-warm py-20">
+    <>
+      <RoleInterest
+        id="interested-maryland-bcba"
+        eyebrow="Interested in the Maryland role?"
+        title="BCBA Opportunity — Maryland"
+        description="Complete this form if you want ABA Cruit to contact you specifically about the Maryland BCBA opportunity shown above."
+        highlights={[
+          "$90–$120 per hour",
+          "25–28 billable hours per week",
+          "Majority remote",
+          "Flexible schedule",
+        ]}
+        interestedRole="BCBA — Maryland"
+        submitLabel="Submit Interest in This Role"
+        successMessage="Thank you. Your interest in the Maryland BCBA opportunity has been received. ABA Cruit will follow up with you about this role."
+      />
+
+      <RoleInterest
+        id="interested-virginia-founding-clinical-consultant"
+        eyebrow="Interested in the Virginia leadership role?"
+        title="Founding Clinical Consultant — Virginia"
+        description="Complete this form if you want ABA Cruit to contact you specifically about the Founding Clinical Consultant opportunity in Virginia."
+        highlights={[
+          "10–15 hours per week",
+          "Primarily remote",
+          "Founding clinical leadership opportunity",
+          "Path to a full-time Clinical Director role",
+        ]}
+        interestedRole="Founding Clinical Consultant (BCBA) — Virginia"
+        submitLabel="Submit Interest in This Role"
+        successMessage="Thank you. Your interest in the Virginia Founding Clinical Consultant opportunity has been received. ABA Cruit will follow up with you about this role."
+        alternate
+      />
+    </>
+  );
+}
+
+function RoleInterest({
+  id,
+  eyebrow,
+  title,
+  description,
+  highlights,
+  interestedRole,
+  submitLabel,
+  successMessage,
+  alternate = false,
+}: {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  highlights: readonly string[];
+  interestedRole: string;
+  submitLabel: string;
+  successMessage: string;
+  alternate?: boolean;
+}) {
+  return (
+    <section id={id} className={alternate ? "bg-soft py-20" : "bg-warm py-20"}>
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-10 rounded-[2rem] border border-blue/20 bg-white p-8 shadow-soft lg:grid-cols-[.8fr_1.2fr] lg:p-12">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.22em] text-blue">
-              Interested in this specific role?
+              {eyebrow}
             </p>
             <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
-              BCBA Opportunity — Maryland
+              {title}
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">
-              Complete this form if you want ABA Cruit to contact you specifically
-              about the Maryland BCBA opportunity shown above.
-            </p>
+            <p className="mt-5 text-lg leading-8 text-slate-600">{description}</p>
 
             <div className="mt-7 space-y-3">
-              {[
-                "$90–$120 per hour",
-                "25–28 billable hours per week",
-                "Majority remote",
-                "Flexible schedule",
-              ].map((item) => (
+              {highlights.map((item) => (
                 <div
                   key={item}
                   className="flex items-center gap-3 text-sm font-bold text-slate-700"
@@ -392,15 +469,14 @@ function RoleInterest() {
             </div>
 
             <p className="mt-7 rounded-2xl bg-soft p-4 text-sm font-bold leading-6 text-slate-700">
-              This submission will be marked as interest in the Maryland BCBA role,
-              not just a general request for future opportunities.
+              This submission will be marked as interest in this specific role, not just a general request for future opportunities.
             </p>
           </div>
 
           <TalentNetworkForm
-            interestedRole="BCBA — Maryland"
-            submitLabel="Submit Interest in This Role"
-            successMessage="Thank you. Your interest in the Maryland BCBA opportunity has been received. ABA Cruit will follow up with you about this role."
+            interestedRole={interestedRole}
+            submitLabel={submitLabel}
+            successMessage={successMessage}
           />
         </div>
       </div>
