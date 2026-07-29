@@ -95,10 +95,19 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-gradient-to-b from-warm to-white">
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero-aba.jpg"
+          alt="ABA professional working with a child"
+          className="h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/25" />
+      </div>
+
       <div className="absolute right-[-120px] top-[-120px] h-80 w-80 rounded-full bg-blue/10 blur-3xl" />
       <div className="absolute bottom-[-160px] left-[-120px] h-96 w-96 rounded-full bg-cream blur-2xl" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/15 bg-white px-4 py-2 text-sm font-bold text-blue shadow-sm">
             <Sparkles className="h-4 w-4" />
