@@ -51,7 +51,6 @@ export default function Home() {
       <Header />
       <Hero />
       <TrustBar />
-      <FeaturedOpportunity />
       <ReferralCTA />
       <TalentNetwork />
       <TwoPaths />
