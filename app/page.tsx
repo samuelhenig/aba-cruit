@@ -95,17 +95,16 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-white">
-      {/* The photo has its own right-side area so the card no longer blocks it. */}
-      <div className="absolute inset-y-0 right-0 hidden w-[46%] lg:block">
+      <div className="absolute inset-0">
         <img
           src="/images/hero-aba.jpg"
           alt="ABA professional working with a child"
-          className="h-full w-full object-cover object-[68%_center]"
+          className="h-full w-full object-cover object-[72%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-[1600px] gap-10 px-5 py-20 lg:grid-cols-[minmax(0,1fr)_460px_300px] lg:px-10 lg:py-24">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/15 bg-white px-4 py-2 text-sm font-bold text-blue shadow-sm">
             <Sparkles className="h-4 w-4" />
@@ -145,8 +144,8 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-soft backdrop-blur-sm md:p-8 lg:col-start-2">
-          <div className="rounded-[1.5rem] bg-soft p-5">
+        <div className="rounded-[2rem] border border-white/40 bg-white/45 p-6 backdrop-blur-xl shadow-2xl md:p-8">
+          <div className="rounded-[1.5rem] bg-white/20 p-5 backdrop-blur-md">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-slate-500">Why ABA Cruit</p>
@@ -165,17 +164,6 @@ function Hero() {
             </div>
           </div>
         </div>
-
-        <div className="hidden lg:block" aria-hidden="true" />
-      </div>
-
-      {/* Mobile photo banner */}
-      <div className="relative h-72 lg:hidden">
-        <img
-          src="/images/hero-aba.jpg"
-          alt="ABA professional working with a child"
-          className="h-full w-full object-cover object-[65%_center]"
-        />
       </div>
     </section>
   );
@@ -530,7 +518,7 @@ function Select({ name, children }: { name: string; children: React.ReactNode })
 
 function Pipeline({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
-    <div className="flex gap-4 rounded-[1.25rem] bg-white p-4 shadow-sm">
+    <div className="flex gap-4 rounded-[1.25rem] border border-white/40 bg-white/55 p-4 backdrop-blur-sm shadow-lg">
       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-warm text-blue">
         {icon}
       </div>
