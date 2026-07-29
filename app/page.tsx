@@ -96,7 +96,7 @@ function Hero() {
       <div className="absolute inset-0">
         <img
           src="/images/hero-aba.jpg"
-          alt="ABA professional working with a child"
+          alt="BCBA providing ABA therapy to a child"
           className="h-full w-full object-cover object-[78%_center]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/35 to-transparent" />
