@@ -94,11 +94,17 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-gradient-to-b from-warm to-white">
-      <div className="absolute right-[-120px] top-[-120px] h-80 w-80 rounded-full bg-blue/10 blur-3xl" />
-      <div className="absolute bottom-[-160px] left-[-120px] h-96 w-96 rounded-full bg-cream blur-2xl" />
+    <section id="top" className="relative overflow-hidden bg-white">
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero-aba.jpg"
+          alt="ABA professional working with a child"
+          className="h-full w-full object-cover object-[72%_center]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/15" />
+      </div>
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/15 bg-white px-4 py-2 text-sm font-bold text-blue shadow-sm">
             <Sparkles className="h-4 w-4" />
@@ -138,7 +144,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft md:p-8">
+        <div className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-soft backdrop-blur-sm md:p-8">
           <div className="rounded-[1.5rem] bg-soft p-5">
             <div className="flex items-center justify-between gap-4">
               <div>
