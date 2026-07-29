@@ -1,6 +1,5 @@
 import {
   ArrowRight,
-  BadgeCheck,
   BriefcaseBusiness,
   CheckCircle2,
   Clock3,
@@ -8,7 +7,6 @@ import {
   Mail,
   MapPin,
   Phone,
-  Search,
   ShieldCheck,
   Sparkles,
   UserRoundCheck,
@@ -99,13 +97,13 @@ function Hero() {
         <img
           src="/images/hero-aba.jpg"
           alt="ABA professional working with a child"
-          className="h-full w-full object-cover object-[72%_center]"
+          className="h-full w-full object-cover object-[78%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/35 to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
-        <div>
+      <div className="relative z-10 mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+        <div className="max-w-2xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/15 bg-white px-4 py-2 text-sm font-bold text-blue shadow-sm">
             <Sparkles className="h-4 w-4" />
             The recruiting company exclusively for ABA
@@ -141,27 +139,6 @@ function Hero() {
             <a href={`mailto:${email}`} className="inline-flex items-center gap-2 hover:text-blue">
               <Mail className="h-4 w-4 text-blue" /> {email}
             </a>
-          </div>
-        </div>
-
-        <div className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-soft backdrop-blur-sm md:p-8">
-          <div className="rounded-[1.5rem] bg-soft p-5">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-slate-500">Why ABA Cruit</p>
-                <h2 className="mt-2 text-3xl font-black">A focused ABA recruiting partner</h2>
-              </div>
-              <div className="rounded-2xl bg-white p-3 text-blue shadow-sm">
-                <UsersRound className="h-8 w-8" />
-              </div>
-            </div>
-
-            <div className="mt-7 space-y-4">
-              <Pipeline icon={<BadgeCheck />} title="ABA Recruiting Specialists" text="We focus on ABA roles and understand the hiring needs of providers and professionals." />
-              <Pipeline icon={<UserRoundCheck />} title="BCBA Focused" text="BCBAs remain our strongest specialty and one of the most requested roles." />
-              <Pipeline icon={<Search />} title="Proactive Outreach" text="We reach out directly instead of relying only on job-board applicants." />
-              <Pipeline icon={<ShieldCheck />} title="Quality Matches" text="We aim for fit, interest, and long-term alignment—not just resumes." />
-            </div>
           </div>
         </div>
       </div>
@@ -513,19 +490,5 @@ function Select({ name, children }: { name: string; children: React.ReactNode })
     >
       {children}
     </select>
-  );
-}
-
-function Pipeline({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
-  return (
-    <div className="flex gap-4 rounded-[1.25rem] bg-white p-4 shadow-sm">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-warm text-blue">
-        {icon}
-      </div>
-      <div>
-        <h3 className="font-black">{title}</h3>
-        <p className="mt-1 text-sm leading-6 text-slate-600">{text}</p>
-      </div>
-    </div>
   );
 }
