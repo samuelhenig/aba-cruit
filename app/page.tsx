@@ -95,16 +95,17 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-white">
-      <div className="absolute inset-0">
+      {/* The photo has its own right-side area so the card no longer blocks it. */}
+      <div className="absolute inset-y-0 right-0 hidden w-[46%] lg:block">
         <img
           src="/images/hero-aba.jpg"
           alt="ABA professional working with a child"
-          className="h-full w-full object-cover object-[72%_center]"
+          className="h-full w-full object-cover object-[68%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
+      <div className="relative z-10 mx-auto grid max-w-[1600px] gap-10 px-5 py-20 lg:grid-cols-[minmax(0,1fr)_460px_300px] lg:px-10 lg:py-24">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/15 bg-white px-4 py-2 text-sm font-bold text-blue shadow-sm">
             <Sparkles className="h-4 w-4" />
@@ -144,7 +145,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-soft backdrop-blur-sm md:p-8">
+        <div className="rounded-[2rem] border border-slate-200 bg-white/95 p-6 shadow-soft backdrop-blur-sm md:p-8 lg:col-start-2">
           <div className="rounded-[1.5rem] bg-soft p-5">
             <div className="flex items-center justify-between gap-4">
               <div>
@@ -164,6 +165,17 @@ function Hero() {
             </div>
           </div>
         </div>
+
+        <div className="hidden lg:block" aria-hidden="true" />
+      </div>
+
+      {/* Mobile photo banner */}
+      <div className="relative h-72 lg:hidden">
+        <img
+          src="/images/hero-aba.jpg"
+          alt="ABA professional working with a child"
+          className="h-full w-full object-cover object-[65%_center]"
+        />
       </div>
     </section>
   );
