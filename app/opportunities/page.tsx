@@ -283,8 +283,8 @@ function OpportunityDirectory() {
         </div>
 
         <div className="inline-flex items-center gap-2 self-start rounded-full border border-slate-200 bg-soft px-4 py-3 text-sm font-bold text-slate-600 md:self-auto">
-          <Filter className="h-4 w-4 text-blue" />
-          {opportunities.length} active {opportunities.length === 1 ? "opportunity" : "opportunities"}
+  <Filter className="h-4 w-4 text-blue" />
+  {opportunities.length} active opportunities
         </div>
       </div>
 
